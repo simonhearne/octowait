@@ -1,0 +1,22 @@
+# Octowait
+
+**A dynamic delay time indicator to minimise cost on Octopus Agile tariffs**
+
+## 1. Assemble the parts
+
+## 2. Install requirements
+
+## 3. Test run
+
+## 4. Add to crontab
+
+`crontab -e`
+`*/15 * * * * cd /home/pi/octowait && ./run.py >/dev/null 2>&1`
+
+## 5. Profit!
+
+Check the screen when you go to set your dishwasher, washing machine, tumble dryer, slow cooker etc.
+Set the delay that is recommended, see your energy bills plummet!
+
+If you are not yet on Octopus Agile - use this link to get £50 credit when you switch (plus you get free smart meters & in-home display!)
+<https://share.octopus.energy/jolly-louse-561>
