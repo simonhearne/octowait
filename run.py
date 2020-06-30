@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
 from datetime import datetime, timedelta
-import json, math
+import json, math, urllib2
 from inky import InkyPHAT
-
-inkyphat = InkyPHAT('black')
+from PIL import Image, ImageFont, ImageDraw
 
 periods_per_hour = 2
 duration = 6 # duration of process in periods, i.e. half-hours
@@ -12,14 +11,14 @@ max_range = 24 # how far to consider in periods, i.e. half-hours
 value = 'value_inc_vat'
 units = 'p'
 date_format = '%Y-%m-%dT%H:%M:%SZ'
+url = 'https://api.octopus.energy/v1/products/AGILE-18-02-21/electricity-tariffs/E-1R-AGILE-18-02-21-J/standard-unit-rates/'
 flip = True
 
 time = datetime.now().replace(second=0, microsecond=0)
 start = time.isoformat() + 'Z'
 end = (time + timedelta(hours=(24+duration/2))).isoformat() + 'Z'
 
-import urllib2
-url = 'https://api.octopus.energy/v1/products/AGILE-18-02-21/electricity-tariffs/E-1R-AGILE-18-02-21-J/standard-unit-rates/?period_from='+start+'&period_to='+end
+url = url + '?period_from='+start+'&period_to='+end
 response = urllib2.urlopen(url)
 data = json.loads(response.read())['results']
 data.reverse()
@@ -67,6 +66,7 @@ for i in range(0,len(result)):
 
 ### IMAGE ###
 
+inkyphat = InkyPHAT('black')
 width = inkyphat.WIDTH
 height = inkyphat.HEIGHT
 padding = 1
@@ -74,7 +74,6 @@ white = inkyphat.WHITE
 black = inkyphat.BLACK
 grey = (white + black)/2
 
-from PIL import Image, ImageFont, ImageDraw
 img = Image.new('P',(width,height),black)
 draw = ImageDraw.Draw(img)
 
@@ -120,7 +119,6 @@ y_step = avail_height / diff
 zero_y = start_y + y_step * maxval
 
 bar_width = float(avail_width) / len(result)
-print(bar_width)
 for i in range(0,len(result)):
     val = result[i]
     index = datetime.strptime(data[i]['valid_from'],date_format).strftime('%H:%M')
