@@ -2,6 +2,10 @@
 
 **A raspberryPi-powered eInk delay time indicator to minimise cost on Octopus Agile tariffs**
 
+![Octowait on a washing machine](/octowait.jpg)
+
+This little RaspberryPi project uses the Octopus Agile tariff API to determine when is the best time to run your high energy usage tasks. Use it to set the delay timer on your dishwasher, washing machine, tumble dryer, immersion heater etc.
+
 ## 1. Assemble the parts
 
 - [Inky pHat](https://amzn.to/3gm150T) £20
@@ -35,7 +39,7 @@ Add the following to the end of the file:
 
 `*/15 * * * * cd /home/pi/octowait && ./run.py >/dev/null 2>&1`
 
-## 5. Profit!
+## 5. Profit
 
 Check the screen when you go to set your dishwasher, washing machine, tumble dryer, slow cooker etc.
 Set the delay that is recommended, see your energy bills plummet!
@@ -52,3 +56,9 @@ If you are running the Pi off a battery, or are just energy conscious, you can r
 - Disable LED: `echo 'dtparam=act_led_trigger=none' >> /boot/config.txt`
 
 You'll need to reboot your Pi for these to have an effect: `sudo reboot now`
+
+## 7. Further improvements
+
+- The code assumes that the data from the Agile rates API is in reverse-chronological order
+- The graph and suggested delay time are roughly correct, within an hour anyway
+- An rPi is over-specified for this simple task, but it is easy to work with. An ESP8266 based board (like the [Adafruit Feather HUZZAH](https://amzn.to/2ZwxQlc) with [Adafruit eInk Display](https://amzn.to/2Aj0QEe)) would be cheaper and lower power.
