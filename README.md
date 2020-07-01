@@ -4,7 +4,7 @@
 
 ![Octowait on a washing machine](/octowait.jpg)
 
-This little RaspberryPi project uses the Octopus Agile tariff API to determine when is the best time to run your high energy usage tasks. Use it to set the delay timer on your dishwasher, washing machine, tumble dryer, immersion heater etc.
+This little RaspberryPi project that uses the Octopus Agile tariff API to determine when is the best time to run your high energy tasks. Use it to set the delay timer on your dishwasher, washing machine, tumble dryer, immersion heater etc.
 
 ## 1. Assemble the parts
 
