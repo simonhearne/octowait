@@ -6,6 +6,8 @@
 
 This little RaspberryPi project that uses the Octopus Agile tariff API to determine when is the best time to run your high energy tasks. Use it to set the delay timer on your dishwasher, washing machine, tumble dryer, immersion heater etc.
 
+This will **save you £100 per year**, assuming a daily 4kWh load (washer + dryer + dishwasher), and a reduction in average unit cost of 7p.
+
 ## 1. Assemble the parts
 
 - [Inky pHat](https://amzn.to/3gm150T) £20
