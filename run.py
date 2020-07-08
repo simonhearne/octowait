@@ -15,8 +15,8 @@ url = 'https://api.octopus.energy/v1/products/AGILE-18-02-21/electricity-tariffs
 flip = True
 
 time = datetime.now().replace(second=0, microsecond=0)
-start = time.isoformat() + 'Z'
-end = (time + timedelta(hours=(24+duration/2))).isoformat() + 'Z'
+start = (time - timedelta(minutes = 30)).isoformat() + 'Z'
+end = (time + timedelta(hours=(max_range/periods_per_hour+duration/periods_per_hour))).isoformat() + 'Z'
 
 url = url + '?period_from='+start+'&period_to='+end
 response = urllib2.urlopen(url)
